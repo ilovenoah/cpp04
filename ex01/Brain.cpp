@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 11:18:34 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/28 17:41:12 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:57:47 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Brain::Brain()
 Brain::Brain(std::string idea[100])
 {
     std::cout << "Brain type constructor called" << std::endl;
-    for (int i = 0; i < 100; i++)
+    for (size_t i = 0; i < 100; i++)
         this->_ideas[i] = idea[i];
 }
 
@@ -39,10 +39,14 @@ Brain::~Brain()
 
 Brain		&Brain::operator=(const Brain &brain)
 {
-    std::cout << "Brain assignation operator called" << std::endl;
     if (this != &brain)
-        for (int i = 0; i < 100; i++)
+    {
+        std::cout << "Brain assignation operator called" << std::endl;
+        for (size_t i = 0; i < 100; i++)
             this->_ideas[i] = brain._ideas[i];
+    }
+    else
+        std::cout << "Brain assignation operator called with itself" << std::endl;
     return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:17:06 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/27 17:23:41 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:50:45 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ Cat::~Cat()
 
 Cat			&Cat::operator=(const Cat &cat)
 {
-    std::cout << "Cat assignation operator called" << std::endl;
-    if (this != &cat)
+    if (this != &cat) {
+        std::cout << "Cat assignation operator called" << std::endl;
         this->_type = cat._type;
+    }
+    else
+        std::cout << "Cat assignation operator called with itself" << std::endl;
     return (*this);
 }
 

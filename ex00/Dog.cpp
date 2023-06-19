@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:17:11 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/27 17:24:16 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:51:51 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ Dog::~Dog()
 
 Dog			&Dog::operator=(const Dog &dog)
 {
-    std::cout << "Dog assignation operator called" << std::endl;
     if (this != &dog)
+    {
+        std::cout << "Dog assignation operator called" << std::endl;
         this->_type = dog._type;
+    }
+    else
+        std::cout << "Dog assignation operator called with itself" << std::endl;
     return (*this);
 }
 

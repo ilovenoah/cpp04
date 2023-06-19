@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 16:48:56 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/28 18:11:33 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:22:01 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main() {
         }
     }
     for (size_t i = 2; i < 4; i++) {
-        animals[i] = new Cat();
+        animals[i] = new(std::nothrow) Cat();
         if (!animals[i]){
             std::cout << "Error: memory allocation failed" << std::endl;
             std::exit(1);
@@ -39,7 +39,7 @@ int main() {
     return 0;
 }
 
-__attribute__((destructor))
-static void destructor() {
-    system("leaks -q a.out");
-}
+// __attribute__((destructor))
+// static void destructor() {
+//     system("leaks -q a.out");
+// }

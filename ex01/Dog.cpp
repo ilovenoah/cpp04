@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 17:17:11 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/28 18:36:46 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:50:29 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,28 @@ Dog::~Dog()
     std::cout << "Dog destructor called" << std::endl;
 }
 
-Dog			&Dog::operator=(const Dog &dog)
+Dog &Dog::operator=(const Dog &dog)
 {
-    std::cout << "Dog assignation operator called" << std::endl;
     if (this != &dog)
+    {
+        std::cout << "Dog assignation operator called" << std::endl;
         this->_type = dog._type;
-    if (_brain)
-        delete _brain;
-    _brain = new(std::nothrow) Brain();
-    if (!_brain){
-        std::cerr << "Memory allocation failed" << std::endl;
-        std::exit(1);
+
+        if (_brain)
+            delete _brain;
+
+        _brain = new(std::nothrow) Brain(*(dog._brain));
+        if (!_brain)
+        {
+            std::cerr << "Memory allocation failed" << std::endl;
+            std::exit(1);
+        }
     }
+    else
+        std::cout << "Self assignment" << std::endl;
     return (*this);
 }
+
 
 void        Dog::makeSound() const
 {

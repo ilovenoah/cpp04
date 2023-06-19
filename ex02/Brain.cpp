@@ -6,7 +6,7 @@
 /*   By: rmatsuok <rmatsuok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 11:18:34 by rmatsuok          #+#    #+#             */
-/*   Updated: 2023/05/28 22:03:10 by rmatsuok         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:58:18 by rmatsuok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ Brain::~Brain()
 
 Brain		&Brain::operator=(const Brain &brain)
 {
-    std::cout << "Brain assignation operator called" << std::endl;
     if (this != &brain)
+    {
+        std::cout << "Brain assignation operator called" << std::endl;
         for (size_t i = 0; i < 100; i++)
             this->_ideas[i] = brain._ideas[i];
+    }
+    else
+        std::cout << "Brain assignation operator called with itself" << std::endl;
     return (*this);
 }
 
